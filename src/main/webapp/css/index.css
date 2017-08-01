@@ -1,0 +1,28 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.head{
+	margin-top: 50px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid black;
+	text-align: right;
+}
+.nav{
+	list-style: none;
+	padding: 0px;
+	text-align: center;
+}
+.nav>li{
+	display: inline-block;	
+}
+.content-right{
+	height: 500px;
+	border: 1px solid black;
+	border-top: 0px;
+}
+.content-right>iframe{
+	width: 100%;
+	height: 100%;
+}

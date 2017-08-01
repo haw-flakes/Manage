@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ssm.dao.UserDAO" >
+    <resultMap id="BaseResultMap" type="ssm.model.User" >
+        <id column="USER_ID" property="userid" jdbcType="INTEGER" />
+        <result column="USER_NAME" property="username" jdbcType="VARCHAR" />
+        <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+        <result column="SEX" property="sex" jdbcType="VARCHAR" />
+        <result column="AGE" property="age" jdbcType="INTEGER" />
+        <result column="PHONE_NUMBER" property="phonenumber" jdbcType="VARCHAR" />
+        <result column="CREATION_DATE" property="creationdate" jdbcType="VARCHAR" />
+        <result column="LAST_UPDATE_DATE" property="lastupdatedate" jdbcType="VARCHAR" />
+        <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        USER_ID,USER_NAME,PASSWORD,SEX,AGE,PHONE_NUMBER,CREATION_DATE,LAST_UPDATE_DATE,COMMENTS
+    </sql>
+    <select id="selectUserByName" resultMap="BaseResultMap" parameterType="ssm.model.User">
+        select
+        <include refid="Base_Column_List" />
+        from CUX_USERS
+        WHERE USER_NAME = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectUserById" resultMap="BaseResultMap" parameterType="ssm.model.User">
+        select
+        <include refid="Base_Column_List" />
+        from CUX_USERS
+        WHERE USER_ID = #{userid,jdbcType=INTEGER}
+    </select>
+
+    <update id="update" parameterType="ssm.model.User">
+        update CUX_USERS set
+        USER_NAME = #{username},
+        PASSWORD = #{password},
+        SEX = #{sex},
+        AGE = #{age},
+        PHONE_NUMBER = #{phonenumber},
+        CREATION_DATE = #{creationdate},
+        LAST_UPDATE_DATE = #{lastupdatedate},
+        COMMENTS = #{comments}
+        where USER_ID = #{userid}
+    </update>
+
+</mapper>

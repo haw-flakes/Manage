@@ -1,0 +1,17 @@
+.nav{
+	list-style: none;
+	padding: 0px;
+}
+.nav a{
+	text-align: center;
+}
+.content{
+	width: 100%;
+	border-top: 1px solid black;
+}
+.content .row{
+	margin: 20px 0px;
+}
+.content>div{
+	text-align: center;
+}

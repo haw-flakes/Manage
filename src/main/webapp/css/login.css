@@ -1,0 +1,27 @@
+h1{
+	text-align: center;
+	margin-top: 150px;
+	margin-bottom: 50px;
+}
+.login{
+	max-width: 500px;
+	height: 150px;
+	border: 1px solid black;
+	margin-left: auto;
+	margin-right: auto;
+}
+.login>form>div{
+	text-align: center;
+	margin: 15px;
+}
+.login>form>div>div{
+	display: inline-block;
+	text-align: left;
+	width: 60px;
+	height: 30px;
+}
+.subbtn>button{
+	margin: 0px 20px;
+	width: 100px;
+	height: 30px;
+}

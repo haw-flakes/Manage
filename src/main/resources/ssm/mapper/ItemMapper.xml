@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ssm.dao.ItemDAO" >
+    <resultMap id="BaseResultMap" type="ssm.model.Item" >
+        <id column="TODO_ITEM_ID" property="itemid" jdbcType="INTEGER" />
+        <result column="USER_ID" property="userid" jdbcType="INTEGER" />
+        <result column="TODO_ITEM_TITLE" property="itemtitle" jdbcType="VARCHAR" />
+        <result column="TODO_ITEM_CONTENT" property="itemcontent" jdbcType="VARCHAR" />
+        <result column="PRIORITY" property="priority" jdbcType="INTEGER" />
+        <result column="CREATION_DATE" property="creationdate" jdbcType="VARCHAR" />
+        <result column="LAST_UPDATE_DATE" property="lastupdatedate" jdbcType="VARCHAR" />
+        <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+        <result column="del" property="del" jdbcType="INTEGER" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        TODO_ITEM_ID,USER_ID,TODO_ITEM_TITLE,TODO_ITEM_CONTENT,PRIORITY,CREATION_DATE,LAST_UPDATE_DATE,COMMENTS,del
+    </sql>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from CUX_TODO_ITEMS
+        WHERE del = 1
+        ORDER BY TODO_ITEM_ID ASC
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="ssm.model.Item">
+        select
+        <include refid="Base_Column_List" />
+        from CUX_TODO_ITEMS
+        WHERE TODO_ITEM_ID = #{itemid} AND del = 1
+    </select>
+    
+    <insert id="insert" parameterType="ssm.model.Item">
+        INSERT INTO CUX_TODO_ITEMS
+        (USER_ID,TODO_ITEM_TITLE,TODO_ITEM_CONTENT,PRIORITY,CREATION_DATE,COMMENTS)
+        VALUES
+        (#{userid},#{itemtitle},#{itemcontent},#{priority},#{creationdate},#{comments})
+    </insert>
+
+    <update id="update" parameterType="ssm.model.Item">
+        update CUX_TODO_ITEMS set
+        TODO_ITEM_TITLE = #{itemtitle},
+        TODO_ITEM_CONTENT = #{itemcontent},
+        PRIORITY = #{priority},
+        LAST_UPDATE_DATE = #{lastupdatedate},
+        COMMENTS = #{comments}
+        where TODO_ITEM_ID = #{itemid}
+    </update>
+
+    <update id="del" parameterType="ssm.model.Item">
+        update CUX_TODO_ITEMS set
+        del = #{del}
+        where TODO_ITEM_ID = #{itemid}
+    </update>
+
+</mapper>

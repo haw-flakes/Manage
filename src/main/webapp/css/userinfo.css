@@ -1,0 +1,10 @@
+h3{
+	border-bottom: 2px solid black;
+	margin-bottom: 20px;
+}
+.row{
+	margin: 10px 0px;
+}
+.span-right{
+	text-align: center;
+}
